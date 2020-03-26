@@ -7,7 +7,9 @@ export default class GuestBookForm extends Component {
     this.state = {
       name: "",
       phone: "",
-      rsvp: false
+      rsvp: false,
+      guestBookList:[],
+      guestBookListRsvp:[]
     };
   }
 handleChange =(event)=>{
@@ -22,8 +24,22 @@ handleChange =(event)=>{
     }
 }
 handleSubmission =(event) =>{
+    if (this.state.rsvp ===true){
+        this.state.guestBookListRsvp.push({name:this.state.name,phone:this.state.phone})
+    }
+    else{
+        this.state.guestBookList.push({name:this.state.name,phone:this.state.phone})
+    }
+    this.setState({guestBookList:this.state.guestBookList})
+    this.setState({guestBookListRsvp:this.state.guestBookListRsvp})
     event.preventDefault();
     console.log(this.state)
+    this.setState({
+        name:"",
+        phone:"",
+        rsvp:false
+    })
+     this.props.addGuestList(this.state.guestBookList,this.state.guestBookListRsvp)
 }
   render() {
     return (

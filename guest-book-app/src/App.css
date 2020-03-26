@@ -38,4 +38,8 @@
 }
 .container{
   display: grid;
+  grid-template-columns: 1fr,1fr,1fr;
+}
+.container h1{
+  grid-column: 1/4;
 }
