@@ -8,22 +8,38 @@ export default class AppContainer extends Component {
     super(props);
 
     this.state = {
+        name:"",
+        phone:"",
+        rsvp:false,
         guestBookList:[],
         guestBookListRsvp:[]
     };
   }
-  addGuest = (updatedGuestList, updatedGuestListRsvp) =>{
+  //Callback function to update guest list and pass down the child components respectively
+  addGuest = (updatedGuestList,updatedGuestListRsvp) =>{
       this.setState({guestBookList:updatedGuestList,guestBookListRsvp:updatedGuestListRsvp})
-      console.log(this.state);
+    // this.setState({name:updatedGuest.name, phone:updatedGuest.phone,rsvp:updatedGuest.rsvp})
+    // if (this.state.rsvp ===true){
+    //     this.state.guestBookListRsvp.push({name:this.state.name,phone:this.state.phone})
+    // }
+    // this.setState({guestBookListRsvp:this.state.guestBookListRsvp})
+    // else{
+    //     this.state.guest
+    // }
+      
       
   }
+//   componentDidUpdate(){
+//       console.log(`this.state component did update`);
+//       console.log(this.state);
+//   }
 
   render() {
       
     return (
       <div className="container">
         <h1>Guest List Manager</h1>
-        <GuestBookForm addGuestList = {this.addGuest}/>
+        <GuestBookForm addGuest = {this.addGuest}/>
         <GuestBookList guestBookList= {this.state.guestBookList} />
         <GuestBookListRSVP guestBookListRsvp = {this.state.guestBookListRsvp} />
       </div>

@@ -12,6 +12,7 @@ export default class GuestBookForm extends Component {
       guestBookListRsvp:[]
     };
   }
+//   Capturing values from input fields and setting their states 
 handleChange =(event)=>{
     if (event.target.name ==="name"){
         this.setState({name:event.target.value})
@@ -23,6 +24,7 @@ handleChange =(event)=>{
         this.setState({rsvp:true})
     }
 }
+//Once the submit button is clicked. It push name and phone to specific list given if the person rsvp or not
 handleSubmission =(event) =>{
     if (this.state.rsvp ===true){
         this.state.guestBookListRsvp.push({name:this.state.name,phone:this.state.phone})
@@ -40,6 +42,7 @@ handleSubmission =(event) =>{
         rsvp:false
     })
      this.props.addGuestList(this.state.guestBookList,this.state.guestBookListRsvp)
+    // this.props.addGuest(this.state)
 }
   render() {
     return (
@@ -65,7 +68,7 @@ handleSubmission =(event) =>{
               </p>
               <p>
                   <label htmlFor="rsvp">RSVP</label>
-                  <input type="checkbox" name="rsvp" id="rsvp" value = {this.state.rsvp} onChange = {this.handleChange}/>
+                  <input type="checkbox" name="rsvp" id="rsvp" value = {this.state.rsvp} onClick = {this.handleChange}/>
               </p>
               < button onClick = {this.handleSubmission} type="submit">Submit</button>
             </fieldset>
