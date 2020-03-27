@@ -10,7 +10,7 @@ export default class GuestBookListRSVP extends Component {
                         return(
                             <div key = {index}>
                                 <p>Name: {guest.name}</p>
-                                <p>Phone:{guest.phone}</p>
+                                <p>Phone: {guest.phone}</p>
                             </div>
                         )
                     })
